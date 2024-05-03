@@ -16,7 +16,7 @@ public class Subject {
         return grade;
     }
 
-    // 필수 과목 등급 산정 메서드
+    // 필수 과목 등급 계산 - 점수 등록시 메서드 호출
     private char[] mainSubjectGrade(int score, int index){
         if (score>=95 && score<=100){
             this.grade[index]='A';
@@ -36,7 +36,7 @@ public class Subject {
         return grade;
     }
 
-    // 선택 과목 등급 산정 메서드
+    // 선택 과목 등급 계산 - 점수 등록시 메서드 호출
     private char[] subSubjectGrade(int score,int index){
         if (score>=90 && score<=100){
             this.grade[index]='A';
