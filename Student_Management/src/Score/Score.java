@@ -1,3 +1,5 @@
+package Score;
+
 public class Score {
 
     // 점수, 등급
