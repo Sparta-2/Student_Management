@@ -3,8 +3,6 @@ package SubjectEnrollment;
 import Score.Score;
 import Student.Student;
 import Student.StudentView;
-import error.InvalidCourseException;
-import error.InvalidScoreException;
 import error.IsFullSessionException;
 
 import java.io.BufferedReader;

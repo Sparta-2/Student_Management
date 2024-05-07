@@ -41,7 +41,7 @@ public class Student extends Person{
 
 
 //
-//    public String getStudentName() {
+//    public String getStudentName() { 이름을 person으로 상속받아서 이부분에서는 구현이 없습니다!
 //        return studentName;
 //    }
 //
@@ -55,11 +55,11 @@ public class Student extends Person{
 //
 //
 //    // 과목별 등급 조회 메서드
-//    public void inquiryGrade(){
+//    public void inquiryGrade(){     // 특정 과목의 정보 출력 -> StudentController에서 다뤘습니다!
 //        Scanner sc= new Scanner(System.in);
 //
 //        System.out.println(this.getStudentName() +"님의 과목등급을 조회합니다.");
-//        System.out.println("조회할 과목의 타입을 선택하세요. (1) 필수 (2) 선택");
+//        System.out.println("조회할 과목의 타입을 선택하세요. (1) 필수 (2) 선택");  // 과목은 다 출력되고, 타입선택 후 또 과목설정이 필요할거 같아서 과목설정후 타입을 보여줬습니다!
 //        int choiceType = sc.nextInt();
 //
 //        switch (choiceType){

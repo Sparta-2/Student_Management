@@ -21,7 +21,7 @@ public class Score {
 
      //필수 과목 등급 계산 - 점수 등록시 메서드 호출
     public static void mainSubjectGrade(Score score) { // 객체의 값을 바꾼거기 때문에 void로 설정으로 바꿨습니다!
-          int points = score.score;
+        int points = score.score;
         if (points >= 95) score.grade = "A"; // if else은 위에서 한번 걸러지고 내려오기 때문에 && <95는 암묵적으로 구현 됩니다!
         else if (points >= 90) score.grade = "B";
         else if (points >= 80) score.grade = "C";

@@ -2,7 +2,7 @@ package Student;
 
 import java.util.Map;
 
-public class StudentView {
+public class StudentView { // 일여ㅇ
 
     //학생 정보 출력
     public void displayStudentDetails(Student student) {

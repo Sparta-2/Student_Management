@@ -2,19 +2,20 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class ScoreEdit {
+public class ScoreEdit { // score을 수정하는곳은 score을 가지고있는 subjectEnrollment에서 이루어졌습니다.
+    // 이곳에서 제거, 추가등 다른 관련 기능도 구현했습니다!
 
     Map<String, String> student = new HashMap<String, String>();
     Scanner sc = new Scanner(System.in);
 
-    String[] EssentialSubject = {"Java", "객체지향", "Spring", "JPA", "MySql"};
+    String[] EssentialSubject = {"Java", "객체지향", "Spring", "JPA", "MySql"}; //예시는 더미데이터 생산 클래스에 만들었습니다!
     String[] SelectSubject = {"디자인패턴", "Spring Security", "Redis", "MongoDB"};
     String StudentNo;
 
     public ScoreEdit() {
 
         // 임시로 학번, 학생 등록
-        student.put("02001", "박다미");
+        student.put("02001", "박다미"); // 직접 입력하면 되서 이제 사용되지 않습니다!
         student.put("02002", "김창민");
         student.put("02003", "윤일영");
         student.put("02004", "최지연");
