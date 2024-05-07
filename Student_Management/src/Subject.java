@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Subject {
 
     String subjectName;
@@ -55,6 +57,5 @@ public class Subject {
         }
         return grade;
     }
-
 
 }
