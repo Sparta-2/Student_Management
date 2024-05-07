@@ -2,11 +2,14 @@ package Student;
 
 import SubjectEnrollment.SubjectEnrollment;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
 public class Student extends Person{
     private Map<String, SubjectEnrollment> subjects;
+    private static List<Student> studentStore = new ArrayList<>();
 
 
     public Student(int id, String name) {
@@ -16,7 +19,24 @@ public class Student extends Person{
         return subjects;
     }
 
+    // 수강생 목록 조회
+    private static void inquiryStudent(){
+//        Student student = new Student();
+//        String studentID = student.getId();
+
+        System.out.println("\n 수강생 목록을 조회합니다...");
+        System.out.println("=======================");
+
+        for (int i = 0; i < studentStore.size(); i++) {
+//            String studentName = studentStore.get(i).getStudentName();
+//            System.out.println((i+1) + "." + "ID: " + studentID + "NAME: " + studentName);
+        }
+        System.out.println("=======================");
+        System.out.println("\n 수강생 목록 조회 성공!");
+    }
 }
+
+
 //
 //    public String getStudentName() {
 //        return studentName;
@@ -72,3 +92,5 @@ public class Student extends Person{
 //        }
 //    }
 //}
+
+
