@@ -56,5 +56,4 @@ public class Subject {
         return grade;
     }
 
-
 }

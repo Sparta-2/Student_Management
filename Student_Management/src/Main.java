@@ -6,53 +6,41 @@ public class Main {
     public static void main(String[] args) {
 
         Student student =new Student();
-
         Scanner sc= new Scanner(System.in);
 
-        // 수강생 특정 과목 회차별 등급 조회
-        // 고유변호, 수강생 이름, 수강하는 과목 목록
-        System.out.println(student.getStudentName() +"님의 과목등급을 조회합니다.");
-        System.out.println("조회할 과목의 타입을 선택하세요. (1) 필수 (2) 선택");
-        int choiceType = sc.nextInt();
-        inquiryGrade(choiceType);
+        System.out.println("==================================");
+        System.out.println("점수 관리 실행 중...");
+        System.out.println("1. 수강생의 점수등록");
+        System.out.println("2. 수강생의 과목별 회차 점수 수정");
+        System.out.println("3. 수강생의 특정 과목 회차별 등급 조회");
+        System.out.println("4. 점수관리 화면 이동");
+        System.out.println("0. 메인 화면 이동");
+        System.out.print("관리 항목을 선택하세요...");
+        int inputChoice = sc.nextInt();
 
-    }
-
-    // 과목별 등급 조회 메서드
-    public static void inquiryGrade(int choiceType){
-        Student student = new Student();
-        Scanner sc= new Scanner(System.in);
-
-        switch (choiceType){
+        switch (inputChoice){
             case 1:
-                System.out.println("필수과목 중 어떤 과목의 등급을 조회하시겠습니까?");
-                student.getSelectMainSubjectName();
-                String choiceSubject=sc.nextLine();
-
-                for (Subject subject : student.getSelectMainSubjectName()) {
-                    if(subject.equals(choiceSubject)){
-                        for (int i=0;i<subject.getScore().length;i++){
-                            System.out.print(i+1+"회차 : "+subject.grade[i]+" ");
-                        }
-                    }
-                }
+                // 수강생의 점수등록
                 break;
             case 2:
-                System.out.println("선택과목 중 어떤 과목의 등급을 조회하시겠습니까?");
-                student.getSelectSubSubjectName();
-                String choiceSubject2=sc.nextLine();
-
-                for (Subject subject : student.getSelectSubSubjectName()) {
-                    if(subject.equals(choiceSubject2)){
-                        for (int i=0;i<subject.getScore().length;i++){
-                            System.out.print(i+1+"회차 : "+subject.grade[i]+" ");
-                        }
-                    }
-                }
+                // 수강생의 과목별 회차 점수 수정
                 break;
-            default:
-                System.out.println("잘못된 입력입니다.");
+            case 3:
+                // 수강생 특정 과목 회차별 등급 조회
+                // 고유변호, 수강생 이름, 수강하는 과목 목록
+                student.inquiryGrade();
+                break;
+            case 4:
+                break;
+            case 0:
                 break;
         }
+
+
+
+
     }
+
+
+
 }
