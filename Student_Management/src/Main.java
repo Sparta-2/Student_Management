@@ -4,6 +4,8 @@ import Student.StudentController;
 import Student.StudentManager;
 import Student.StudentView;
 import SubjectEnrollment.SubjectEnrollmentController;
+import error.InvalidScoreException;
+import error.InvalidStudentIdException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,12 +17,12 @@ public class Main {
     private static StudentManager studentManager = new StudentManager();
     private static StudentController studentController;
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InvalidStudentIdException {
         studentController = new StudentController(studentView, studentManager);
         mainPage();
     }
 
-    private static void mainPage() throws IOException {
+    private static void mainPage() throws IOException, InvalidStudentIdException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         System.out.println("\n==============[수강생관리 메인화면]====================");
@@ -71,11 +73,13 @@ public class Main {
             }
         }  catch (IOException e){
             System.out.println(e.getMessage());
+        } catch (InvalidStudentIdException e) {
+            System.out.println(e.getMessage());
         }
     }
 
 
-    private static void scoreSettingSession(BufferedReader br, Student student) throws IOException {
+    private static void scoreSettingSession(BufferedReader br, Student student) throws IOException, InvalidStudentIdException {
         //2 점수관리
         System.out.println("==============[2. 점수 관리 페이지]====================");
         System.out.println("점수 관리 실행 중...");
@@ -90,14 +94,14 @@ public class Main {
         switch (input) {
             case "1":
                 //수강생의 점수등록
-           //     SubjectEnrollmentController.getMoreAddScoreSession(br, student);
+                SubjectEnrollmentController.handleAddScores(br,student);
                 break;
             case "2":
-           //     SubjectEnrollmentController.handleUpdateScores(br, student);
+                SubjectEnrollmentController.handleUpdateScores(br, student);
                 break;
             case "3":
                 // 수강생의 특정 과목 회차별 등급 조회
-             //   SubjectEnrollmentController.displaySessionGrades(br, student);
+               SubjectEnrollmentController.displaySessionGrades(br, student);
                 break;
             case "4":
                 manageScores(br);
@@ -111,7 +115,7 @@ public class Main {
         }
     }
 
-    private static void studentManageSession(BufferedReader br) throws IOException {
+    private static void studentManageSession(BufferedReader br) throws IOException, InvalidStudentIdException {
         System.out.println("==================================");
         System.out.println("수강생 관리 실행 중...");
         System.out.println("1. 수강생 등록");
@@ -130,18 +134,18 @@ public class Main {
                 mainPage();
                 break;
             case "2":
-                //  메인 >> 2 선택 시 : 수강생 리스트 쭉 보여주고 수강생 번호 입력하기
+                // 수강생 리스트
                 studentView.displaysAllStudents(studentManager.getAllStudents());
                 mainPage();
 
                 // 점수 관리 핸들러 호출
                 break;
             case "3":
-               // studentController.handleUpdateName(br);
+                studentController.handleUpdateName(br);
                 mainPage();
                 break;
             case "4":
-               // studentController.handleDeleteName(br);
+                studentController.handleDeleteName(br);
                 mainPage();
                 break;
             case "5":
@@ -153,4 +157,5 @@ public class Main {
                 break;
         }
     }
+
 }

@@ -2,6 +2,7 @@ package SubjectEnrollment;
 
 import Score.Score;
 import Subject.Subject;
+import error.IsFullSessionException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,10 +22,22 @@ public class SubjectEnrollment {
         this.subject = subject;
         this.scoresBySession = scoresBySession;
     }
+    public Map<Integer, Score> getScoresBySession() {
+        return scoresBySession;
+    }
 // Map<String, String> student = new HashMap<String, String>();
   //  static Map<Integer, Integer> subject = new HashMap<Integer, Integer>(10);
 
-
+    public int findNextSession() throws IsFullSessionException {
+        int nextSession = 1;
+        while (scoresBySession.containsKey(nextSession)) {
+            nextSession++;
+            if (nextSession > 10) {
+                throw new IsFullSessionException("섹션이 모두 가득 찼습니다");
+            }
+        }
+        return nextSession;
+    }
 
     Scanner sc = new Scanner(System.in);
 
@@ -33,7 +46,9 @@ public class SubjectEnrollment {
     String StudentName;
     int enrollmentScore = 0;
     int session = 0;
-
+    public void inputScore(int session, int score)  {
+        scoresBySession.put(session, new Score(score, "A"));
+    }
 //    public SubjectEnrollment() {
 //
 //        // 임시로 학번, 학생 등록

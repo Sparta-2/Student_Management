@@ -37,7 +37,7 @@ public class Student extends Person{
         System.out.println("=======================");
         System.out.println("\n 수강생 목록 조회 성공!");
     }
-}
+
 
 
 //
@@ -94,6 +94,5 @@ public class Student extends Person{
 //                break;
 //        }
 //    }
-//}
 
-
+}

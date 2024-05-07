@@ -3,6 +3,7 @@ package Student;
 import Subject.Subject;
 import Subject.SubjectData;
 import SubjectEnrollment.SubjectEnrollment;
+import error.InvalidStudentIdException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -106,7 +107,7 @@ public class StudentController {
     }
 
    // 유효한 학생 번호인지 값인지 확인하기
-   public int getValidStudentId(BufferedReader br) throws IOException {
+   public int getValidStudentId(BufferedReader br) throws InvalidStudentIdException,IOException {
        while (true) {
            System.out.print("학생 고유번호를 입력하세요: ");
 
@@ -115,13 +116,10 @@ public class StudentController {
 
                int studentId = Integer.parseInt(input.trim());
 
-               if (studentManager.getStudentById(studentId) == null) {
-                   System.out.println("해당 고유번호를 가진 학생이 존재하지 않습니다. 다시 입력해주세요.");
-               }
                if (studentManager.getStudentById(studentId) != null) {
                    return studentId;
                } else {
-                   System.out.println("해당 고유번호를 가진 학생이 존재하지 않습니다. 다시 입력해주세요.");
+                   throw new InvalidStudentIdException("없는 학생번호입니다. 다시 시도하세요.");
                }
            } catch (NumberFormatException e) {
                System.out.println(e.getMessage());
@@ -129,4 +127,60 @@ public class StudentController {
 
        }
    }
+    //학생 이름 수정하기
+    public void handleUpdateName(BufferedReader br) throws InvalidStudentIdException {
+        StudentView studentView = new StudentView();
+        studentView.displayBasicInfoStudent(studentManager.getAllStudents());
+
+        System.out.println("이름을 변경할 학생의 고유번호를 입력하세요:");
+        try {
+            int studentId = getValidStudentId(br); // 고유번호 입력 받기
+
+            Student studentToUpdate = studentManager.getStudentById(studentId);
+
+            System.out.printf("변경하실 이름을 입력하세요 \n [현재 이름: %s] >> : ", studentToUpdate.getName());
+            String newName = br.readLine().trim(); // 새 이름 입력 받기
+            studentToUpdate.setName(newName); // 이름 변경
+            System.out.println("이름이 성공적으로 변경되었습니다.");
+
+        }
+        catch (InvalidStudentIdException e) {
+            throw new InvalidStudentIdException(e.getMessage());
+        }
+        catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    // 학생 지우기
+    public void handleDeleteName(BufferedReader br) {
+        view.displayBasicInfoStudent(studentManager.getAllStudents());
+
+        try {
+            System.out.println("삭제할 학생의 고유번호를 입력하세요:");
+
+            int studentId = getValidStudentId(br); // 고유번호 입력 받기
+
+            Student studentToUpdate = studentManager.getStudentById(studentId);
+            if (studentToUpdate != null) {
+                System.out.printf("삭제할 이름을 확인하세요 \n [현재 이름: %s]수강생을 정말 삭제하시겠습니까?(Y/N)\n >> : ", studentToUpdate.getName());
+                String answer = br.readLine().trim();
+                if (answer.equalsIgnoreCase("Y")) {
+
+                    studentManager.deleteStudent(studentId);
+                    //freeId
+                    IDGenerator.getInstance().freeId(studentId);
+                    System.out.println("성공적으로 삭제되었습니다.");
+                } else {
+                    System.out.println("해당 고유 번호를 가진 학생이 존재하지 않습니다.");
+                }
+            }
+        } catch (InvalidStudentIdException e) {
+            System.out.println(e.getMessage());
+        }
+        catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 }
