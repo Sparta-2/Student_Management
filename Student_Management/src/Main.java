@@ -9,6 +9,36 @@ public class Main {
 
         Scanner sc= new Scanner(System.in);
 
+        // 점수 수정
+//        ScoreModify scoreModify = new ScoreModify(90);
+//        System.out.println("2회차:"+ scoreModify.getScore() +" 에서 변환할 점수를 입력해주세요");
+//        System.out.print(">> ");
+//        int modifyScore = sc.nextInt();
+//        System.out.println("2회차: " + modifyScore);
+//        System.out.println("점수가 성공적으로 등록되었습니다.");
+//
+//        // 화면 이동
+//        System.out.println("1. 점수등록\n2. 점수수정\n3. 회차별 등급 조회\n4. 다른수강생 선택하기\n0. 메인화면 이동");
+//        System.out.print("이동하고 싶은 화면을 선택해주세요: ");
+//        int screenChange = sc.nextInt();
+//        switch (screenChange) {
+//            case 1:
+//                break;
+//            case 2:
+//                break;
+//            case 3:
+//                break;
+//            case 4:
+//                break;
+//            case 0:
+//                break;
+//            default:
+//                System.out.println("잘못된 입력입니다.");
+//                break;
+//        }
+
+
+
         // 수강생 특정 과목 회차별 등급 조회
         // 고유변호, 수강생 이름, 수강하는 과목 목록
         System.out.println(student.getStudentName() +"님의 과목등급을 조회합니다.");
