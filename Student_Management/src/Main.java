@@ -1,5 +1,7 @@
 
+import Student.Student;
 import Student.StudentController;
+import Student.StudentManager;
 import Student.StudentView;
 import SubjectEnrollment.SubjectEnrollmentController;
 
@@ -10,6 +12,7 @@ import java.util.Scanner;
 
 public class Main {
     private static StudentView studentView = new StudentView();
+    private static StudentManager studentManager = new StudentManager();
     private static StudentController studentController;
 
     public static void main(String[] args) throws IOException {
@@ -66,10 +69,7 @@ public class Main {
                 System.out.println("없는 학생입니다. 다시 시도하세요.");
                 manageScores(br); // 재시도
             }
-        } catch (InvalidStudentIdException e){
-            System.out.println(e.getMessage());
-
-        } catch (IOException e){
+        }  catch (IOException e){
             System.out.println(e.getMessage());
         }
     }
@@ -90,15 +90,14 @@ public class Main {
         switch (input) {
             case "1":
                 //수강생의 점수등록
-                SubjectEnrollmentController.handleAddScores(br, student);
+           //     SubjectEnrollmentController.getMoreAddScoreSession(br, student);
                 break;
             case "2":
-                SubjectEnrollmentController.handleUpdateScores(br, student);
+           //     SubjectEnrollmentController.handleUpdateScores(br, student);
                 break;
             case "3":
                 // 수강생의 특정 과목 회차별 등급 조회
-                SubjectEnrollmentController.displaySessionGrades(br, student);
-                // scoreSettingSession(br, student);
+             //   SubjectEnrollmentController.displaySessionGrades(br, student);
                 break;
             case "4":
                 manageScores(br);
@@ -138,11 +137,11 @@ public class Main {
                 // 점수 관리 핸들러 호출
                 break;
             case "3":
-                studentController.handleUpdateName(br);
+               // studentController.handleUpdateName(br);
                 mainPage();
                 break;
             case "4":
-                studentController.handleDeleteName(br);
+               // studentController.handleDeleteName(br);
                 mainPage();
                 break;
             case "5":

@@ -12,7 +12,7 @@ public class StudentView {
         System.out.printf("학생 ID: %d, 이름: %s\n", student.getId(), student.getName());
         System.out.println("수강 과목:");
         student.getSubjects().forEach((id, enrollment) ->
-                System.out.println("과목 ID: " + id + ", 과목 이름: " + enrollment.getSubject()));
+                System.out.println("과목 ID: " + id + ", 과목 이름: " + enrollment.getSubject().getSubjectName()));
         System.out.println("=========================================");
     }
 

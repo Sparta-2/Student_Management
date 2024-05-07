@@ -9,12 +9,15 @@ import java.util.Scanner;
 
 public class Student extends Person{
     private Map<String, SubjectEnrollment> subjects;
+
     private static List<Student> studentStore = new ArrayList<>();
 
 
-    public Student(int id, String name) {
+    public Student(int id, String name, Map<String, SubjectEnrollment> subjects) {
         super(id, name);
+        this.subjects = subjects;
     }
+
     public Map<String, SubjectEnrollment> getSubjects() {
         return subjects;
     }

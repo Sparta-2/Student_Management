@@ -23,7 +23,7 @@ public class SubjectData {
     }
 
     // 더미데이터 전체 불러오기
-    public static List<Subject> getCourseList() {
+    public static List<Subject> getSubjectList() {
         return subjects;
     }
 }

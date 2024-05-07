@@ -17,15 +17,18 @@ public class SubjectEnrollment {
         return subject;
     }
 
-    // Map<String, String> student = new HashMap<String, String>();
+    public SubjectEnrollment(Subject subject, Map<Integer,Score> scoresBySession) {
+        this.subject = subject;
+        this.scoresBySession = scoresBySession;
+    }
+// Map<String, String> student = new HashMap<String, String>();
   //  static Map<Integer, Integer> subject = new HashMap<Integer, Integer>(10);
 
 
 
     Scanner sc = new Scanner(System.in);
 
-    String[] EssentialSubject = {"Java", "객체지향", "Spring", "JPA", "MySql"};
-    String[] SelectSubject = {"디자인패턴", "Spring Security", "Redis", "MongoDB"};
+
     String StudentNo;
     String StudentName;
     int enrollmentScore = 0;
