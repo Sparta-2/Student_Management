@@ -1,5 +1,7 @@
 package Student;
 
+import SubjectEnrollment.SubjectEnrollment;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,6 +27,12 @@ public class StudentManager {
         for (Student student : students.values()) {
             System.out.printf("ID: %d, 이름: %s\n", student.getId(), student.getName());
         }
+    }
+    public void displayStudentsAllSubjects(Student student) {
+        for (SubjectEnrollment enrollment : student.getSubjects().values()) {
+            System.out.printf("과목 ID: %s, 과목 이름: %s\n", enrollment.getSubject().getSubjectId(), enrollment.getSubject().getSubjectName());
+        }
+
     }
     // ID로 학생 검색
     public Student getStudentById(int id) {

@@ -3,6 +3,7 @@ package SubjectEnrollment;
 import Score.Score;
 import Student.Student;
 import Student.StudentView;
+import Subject.Subject;
 import error.IsFullSessionException;
 
 import java.io.BufferedReader;
@@ -15,7 +16,7 @@ public class SubjectEnrollmentController {
     static StudentView studentview = new StudentView();
 
     // 점수 더 추가하기
-    public static void handleAddScores(BufferedReader br, Student student) {
+    public void handleAddScores(BufferedReader br, Student student) {
         studentview.displayStudentDetails(student);
         try {
             String SubjectId = getValidSubjectId(br, student);
@@ -34,7 +35,7 @@ public class SubjectEnrollmentController {
     }
 
     //점수 입력
-    public static void getMoreAddScoreSession(BufferedReader br, Student student, SubjectEnrollment subjectEnrollment) throws IOException {
+    public void getMoreAddScoreSession(BufferedReader br, Student student, SubjectEnrollment subjectEnrollment) throws IOException {
 
         try {
             int nextSession = subjectEnrollment.findNextSession();
@@ -70,7 +71,7 @@ public class SubjectEnrollmentController {
         }
     }
 
-    public static void getAddScoreSession(BufferedReader br, Student student, SubjectEnrollment subjectEnrollment) {
+    public void getAddScoreSession(BufferedReader br, Student student, SubjectEnrollment subjectEnrollment) {
         // 채워지지않은 섹션보여주기
         try {
             int nextSession = subjectEnrollment.findNextSession();
@@ -95,7 +96,7 @@ public class SubjectEnrollmentController {
     }
 
     //점수 수정하기
-    public static void handleUpdateScores(BufferedReader br, Student student) {
+    public void handleUpdateScores(BufferedReader br, Student student) {
 
         studentview.displayStudentDetails(student);
         try {
@@ -105,6 +106,7 @@ public class SubjectEnrollmentController {
                 System.out.println("입력한 과목 ID가 유효하지 않습니다.");
                 return;
             }
+            System.out.println("선택된 과목인 ["+student.getSubjects().get(subjectId).subject.getSubjectName() + "]의 바꿀 점수의 섹션을 입력하세요:");
 
             // 해당 과목 찾은 후 섹션 입력
             SubjectEnrollment subjectEnrollment = student.getSubjects().get(subjectId);
@@ -200,6 +202,10 @@ public class SubjectEnrollmentController {
             }
         }
         int session = 0;
+//             displaySelectedCourseScores(subjectEnrollment);
+        //모두볼지 섹션별 선택할지
+
+        displaySelectedCourseScores(subjectEnrollment);
 
         while (true) {
             System.out.printf("[%s]의 조회하고 싶은 [회차]를 입력하세요:\n", subjectEnrollment.getSubject().getSubjectName());

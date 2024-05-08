@@ -16,7 +16,7 @@ public class Main {
     private static StudentView studentView = new StudentView();
     private static StudentManager studentManager = new StudentManager();
     private static StudentController studentController;
-
+    private static SubjectEnrollmentController subjectEnrollmentController = new SubjectEnrollmentController();
     public static void main(String[] args) throws IOException, InvalidStudentIdException {
         studentController = new StudentController(studentView, studentManager);
         mainPage();
@@ -94,14 +94,15 @@ public class Main {
         switch (input) {
             case "1":
                 //수강생의 점수등록
-                SubjectEnrollmentController.handleAddScores(br,student);
+                studentView.displaysSubjectSessions(student);
+                subjectEnrollmentController.handleAddScores(br,student);
                 break;
             case "2":
-                SubjectEnrollmentController.handleUpdateScores(br, student);
+                subjectEnrollmentController.handleUpdateScores(br, student);
                 break;
             case "3":
                 // 수강생의 특정 과목 회차별 등급 조회
-               SubjectEnrollmentController.displaySessionGrades(br, student);
+                subjectEnrollmentController.displaySessionGrades(br, student);
                 break;
             case "4":
                 manageScores(br);
