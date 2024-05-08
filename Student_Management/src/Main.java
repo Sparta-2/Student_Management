@@ -42,8 +42,6 @@ public class Main {
                 //  메인 >> 2 선택 시 : 수강생 리스트 쭉 보여주고 수강생 번호 입력하기
                 studentManager.displayAllStudents();
                 manageScores(br);
-                // 수강생 번호 입력하기
-                System.out.println("수강생 번호를 입력하세요:");
                 mainPage();
 
                 break;

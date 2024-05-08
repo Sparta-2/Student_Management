@@ -170,17 +170,17 @@ public class SubjectEnrollmentController {
 
     // 유효한 점수 확인
     public static int getValidScore(BufferedReader br) throws IOException {
-        try {
-            int newScore = Integer.parseInt(br.readLine());
-            if (newScore < 0 || newScore > 100) {
-
-                System.out.println("0~100의 점수를 입력해야 합니다.");
+        while (true) {
+            try {
+                int newScore = Integer.parseInt(br.readLine().trim());
+                if (newScore >= 0 && newScore <= 100) {
+                    return newScore;
+                } else {
+                    System.out.println("0~100의 점수를 입력해야 합니다.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println(e.getMessage());
             }
-            return newScore;
-
-        } catch (NumberFormatException e) {
-            System.out.println(e.getMessage());
-            return -1;
         }
     }
 
