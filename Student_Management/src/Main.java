@@ -29,7 +29,7 @@ public class Main {
         System.out.println("내일배움캠프 수강생 관리 프로그램 실행 중...");
         System.out.println("1. 수강생 관리");
         System.out.println("2. 점수 관리");
-        System.out.println("3. 프로그램 종료");
+        System.out.println("0. 프로그램 종료");
         System.out.print("관리 항목을 선택하세요...\n>> ");
 
         String input = br.readLine();
@@ -45,7 +45,7 @@ public class Main {
                 mainPage();
 
                 break;
-            case "3":
+            case "0":
                 System.out.println("프로그램을 종료합니다.");
                 System.exit(0);
                 break;
@@ -59,7 +59,6 @@ public class Main {
     // 선택된 학생에 대한 과목
     private static void manageScores(BufferedReader br) {
         try {
-            System.out.println("수강생 번호를 입력하세요:");
             int studentId = studentController.getValidStudentId(br);
 
             Student student = studentManager.getStudent(studentId);
@@ -147,7 +146,7 @@ public class Main {
                 studentController.handleDeleteName(br);
                 mainPage();
                 break;
-            case "5":
+            case "0":
                 mainPage();
                 break;
             default:

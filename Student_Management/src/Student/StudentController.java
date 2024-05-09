@@ -45,7 +45,6 @@ public class StudentController {
             return;
         }
 
-        SubjectData.createSubjectList();
         List<Subject> allSubjects = SubjectData.getSubjectList();
         // 데이터 가져와서 보여주기
 
@@ -56,8 +55,8 @@ public class StudentController {
     }
 
     public static Map<String, SubjectEnrollment> getSubjectEnrollments(BufferedReader br, List<Subject> allSubjects) throws IOException {
-        displayRequiredSubjects("필수 과목", filterSubjectsByType(allSubjects, "required"));
-        displayElectiveSubjects("선택 과목", filterSubjectsByType(allSubjects, "elective"));
+        displayRequiredSubjects("필수 과목", filterSubjectsByType(allSubjects.stream().filter(Subject -> Subject.getType().equals("required")).collect(Collectors.toList()), "required"));
+        displayElectiveSubjects("선택 과목", filterSubjectsByType(allSubjects.stream().filter(Subject -> Subject.getType().equals("elective")).collect(Collectors.toList()), "elective"));
 
         System.out.println("필수 과목 및 선택 과목 중에서 선택할 과목의 ID를 입력하세요 (예: C01 D02):");
         System.out.println("**[필수과목은 3개] 이상, [선택과목는 2개이상]을 등록해야합니다.**");

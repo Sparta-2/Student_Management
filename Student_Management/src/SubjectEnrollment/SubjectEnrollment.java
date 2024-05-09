@@ -39,13 +39,13 @@ public class SubjectEnrollment {
         return nextSession;
     }
 
-    Scanner sc = new Scanner(System.in);
-
-
-    String StudentNo;
-    String StudentName;
-    int enrollmentScore = 0;
-    int session = 0;
+//    Scanner sc = new Scanner(System.in);
+//
+//
+//    String StudentNo;
+//    String StudentName;
+//    int enrollmentScore = 0;
+//    int session = 0;
     public void inputScore(int session, int score)  {
         scoresBySession.put(session, new Score(score, "A"));
     }
