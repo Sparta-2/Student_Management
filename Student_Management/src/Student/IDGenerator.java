@@ -4,6 +4,9 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
+/*
+싱글톤 ID생성 - 재사용 가능
+ */
 public class IDGenerator {
     private static IDGenerator instance;
     private int currentId;

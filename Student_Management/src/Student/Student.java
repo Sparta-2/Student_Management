@@ -12,7 +12,6 @@ public class Student extends Person{
 
     private static List<Student> studentStore = new ArrayList<>();
 
-
     public Student(int id, String name, Map<String, SubjectEnrollment> subjects) {
         super(id, name);
         this.subjects = subjects;

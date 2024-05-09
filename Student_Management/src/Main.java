@@ -121,7 +121,7 @@ public class Main {
         System.out.println("2. 수강생 목록 조회");
         System.out.println("3. 수강생 정보 수정");
         System.out.println("4. 수강생 정보 삭제");
-        System.out.println("5. 메인 화면 이동");
+        System.out.println("0. 메인 화면 이동");
 
         System.out.print("관리 항목을 선택하세요...\n>>");
 
@@ -156,5 +156,4 @@ public class Main {
                 break;
         }
     }
-
 }

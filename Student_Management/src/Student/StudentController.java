@@ -56,8 +56,8 @@ public class StudentController {
     }
 
     public static Map<String, SubjectEnrollment> getSubjectEnrollments(BufferedReader br, List<Subject> allSubjects) throws IOException {
-        displaySubjects("필수 과목", filterSubjectsByType(allSubjects, "required"));
-        displaySubjects("선택 과목", filterSubjectsByType(allSubjects, "elective"));
+        displayRequiredSubjects("필수 과목", filterSubjectsByType(allSubjects, "required"));
+        displayElectiveSubjects("선택 과목", filterSubjectsByType(allSubjects, "elective"));
 
         System.out.println("필수 과목 및 선택 과목 중에서 선택할 과목의 ID를 입력하세요 (예: C01 D02):");
         System.out.println("**[필수과목은 3개] 이상, [선택과목는 2개이상]을 등록해야합니다.**");
@@ -93,6 +93,7 @@ public class StudentController {
         }
         return enrollments;
     }
+
     // 필수과목인지 선택과목인지 타입에 맞춰서 불러오기
     private static List<Subject> filterSubjectsByType(List<Subject> Subjects, String type) {
         return Subjects.stream()
@@ -100,9 +101,16 @@ public class StudentController {
                 .collect(Collectors.toList());
     }
 
-    private static void displaySubjects(String header, List<Subject> Subjects) {
-        System.out.println(header + ":");
-        Subjects.forEach(Subject -> System.out.printf(" %s (%s) |", Subject.getSubjectName(), Subject.getSubjectId()));
+    private static void displayRequiredSubjects(String header, List<Subject> Subjects) {
+        System.out.println("--"+header + "--");
+        Subjects.stream().filter(Subject -> Subject.getType().equals("required"))
+                .forEach(Subject -> System.out.printf(" %s (%s) |", Subject.getSubjectName(), Subject.getSubjectId()));
+        System.out.println("\n");
+    }
+    private static void displayElectiveSubjects(String header, List<Subject> Subjects) {
+        System.out.println("--"+header + "--");
+        Subjects.stream().filter(Subject -> Subject.getType().equals("elective"))
+                .forEach(Subject -> System.out.printf(" %s (%s) |", Subject.getSubjectName(), Subject.getSubjectId()));
         System.out.println("\n");
     }
 
@@ -127,6 +135,7 @@ public class StudentController {
 
        }
    }
+
     //학생 이름 수정하기
     public void handleUpdateName(BufferedReader br) throws InvalidStudentIdException {
         StudentView studentView = new StudentView();
@@ -151,6 +160,7 @@ public class StudentController {
             throw new RuntimeException(e);
         }
     }
+
     // 학생 지우기
     public void handleDeleteName(BufferedReader br) {
         view.displayBasicInfoStudent(studentManager.getAllStudents());
