@@ -1,6 +1,7 @@
-package Student;
+package Student.controllers;
 
-import SubjectEnrollment.SubjectEnrollment;
+import Student.models.Student;
+import SubjectEnrollment.models.SubjectEnrollment;
 
 import java.util.HashMap;
 import java.util.Map;

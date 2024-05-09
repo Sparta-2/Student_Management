@@ -1,4 +1,4 @@
-package Student;
+package Service;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -10,7 +10,7 @@ import java.util.TreeSet;
 public class IDGenerator {
     private static IDGenerator instance;
     private int currentId;
-    private Set<Integer> allocatedIds; // 사용중인 id
+    private Set<Integer> allocatedIds; // 사용중인 id 중복제거와 빠른 삽입 삭제
     private TreeSet<Integer> freeIds; // 사용됐다가 삭제 된 id
 
     private IDGenerator() {

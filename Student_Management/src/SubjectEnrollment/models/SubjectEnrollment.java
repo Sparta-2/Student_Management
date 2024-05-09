@@ -1,4 +1,4 @@
-package SubjectEnrollment;
+package SubjectEnrollment.models;
 
 import Score.Score;
 import Subject.Subject;

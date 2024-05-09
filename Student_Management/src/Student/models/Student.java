@@ -1,13 +1,12 @@
-package Student;
+package Student.models;
 
-import SubjectEnrollment.SubjectEnrollment;
+import SubjectEnrollment.models.SubjectEnrollment;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 
-public class Student extends Person{
+public class Student extends Person {
     private Map<String, SubjectEnrollment> subjects;
 
     private static List<Student> studentStore = new ArrayList<>();

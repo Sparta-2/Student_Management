@@ -1,8 +1,11 @@
-package Student;
+package Student.controllers;
 
+import Service.IDGenerator;
+import Student.models.Student;
+import Student.views.StudentView;
 import Subject.Subject;
 import Subject.SubjectData;
-import SubjectEnrollment.SubjectEnrollment;
+import SubjectEnrollment.models.SubjectEnrollment;
 import error.InvalidStudentIdException;
 
 import java.io.BufferedReader;

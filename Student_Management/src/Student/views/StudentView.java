@@ -1,8 +1,8 @@
-package Student;
+package Student.views;
 
-import SubjectEnrollment.SubjectEnrollment;
+import Student.models.Student;
+import SubjectEnrollment.models.SubjectEnrollment;
 
-import java.io.BufferedReader;
 import java.util.Map;
 
 public class StudentView {

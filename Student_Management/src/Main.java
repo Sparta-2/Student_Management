@@ -1,22 +1,22 @@
-
-import Student.Student;
-import Student.StudentController;
-import Student.StudentManager;
-import Student.StudentView;
-import SubjectEnrollment.SubjectEnrollmentController;
-import error.InvalidScoreException;
+import Student.models.Student;
+import Student.controllers.StudentController;
+import Student.controllers.StudentManager;
+import Student.views.StudentView;
+import SubjectEnrollment.controllers.SubjectEnrollmentController;
+import SubjectEnrollment.views.SubjectEnrollmentView;
 import error.InvalidStudentIdException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Scanner;
 
 public class Main {
     private static StudentView studentView = new StudentView();
     private static StudentManager studentManager = new StudentManager();
     private static StudentController studentController;
     private static SubjectEnrollmentController subjectEnrollmentController = new SubjectEnrollmentController();
+    private static SubjectEnrollmentView subjectEnrollmentView = new SubjectEnrollmentView();
+
     public static void main(String[] args) throws IOException, InvalidStudentIdException {
         studentController = new StudentController(studentView, studentManager);
         mainPage();
@@ -68,7 +68,7 @@ public class Main {
                 System.out.println("없는 학생입니다. 다시 시도하세요.");
                 manageScores(br); // 재시도
             }
-        }  catch (IOException e){
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         } catch (InvalidStudentIdException e) {
             System.out.println(e.getMessage());
@@ -92,15 +92,21 @@ public class Main {
             case "1":
                 //수강생의 점수등록
                 studentView.displaysSubjectSessions(student);
-                subjectEnrollmentController.handleAddScores(br,student);
+                subjectEnrollmentController.handleAddScores(br, student);
+                scoreSettingSession(br, student); // 재호출
                 break;
+
             case "2":
                 subjectEnrollmentController.handleUpdateScores(br, student);
+                scoreSettingSession(br, student); // 재호출
                 break;
+
             case "3":
                 // 수강생의 특정 과목 회차별 등급 조회
-                subjectEnrollmentController.displaySessionGrades(br, student);
+                subjectEnrollmentView.displaySessionGrades(br, student);
+                scoreSettingSession(br, student);
                 break;
+
             case "4":
                 manageScores(br);
                 break;
