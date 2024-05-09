@@ -1,7 +1,9 @@
 package error;
 
+import utils.ErrorMessages;
+
 public class InvalidScoreException extends Exception {
-    public InvalidScoreException(String message) {
-        super(message);
+    public InvalidScoreException(ErrorMessages message) {
+        super(message.getMessage());
     }
 }

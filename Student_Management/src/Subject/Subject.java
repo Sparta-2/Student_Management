@@ -1,4 +1,8 @@
 package Subject;
+
+import error.InvalidSessionException;
+import error.IsFullSessionException;
+
 public class Subject {
 
     String subjectName;
@@ -34,5 +38,6 @@ public class Subject {
     public void setType(String type) {
         this.type = type;
     }
+
 
 }

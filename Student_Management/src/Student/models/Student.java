@@ -21,7 +21,7 @@ public class Student extends Person {
     }
 
     // 수강생 목록 조회
-    private static void inquiryStudent(){
+    private static void inquiryStudent() {
 //        Student student = new Student();
 //        String studentID = student.getId();
 

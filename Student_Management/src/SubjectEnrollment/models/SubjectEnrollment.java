@@ -2,7 +2,9 @@ package SubjectEnrollment.models;
 
 import Score.Score;
 import Subject.Subject;
+import error.InvalidSessionException;
 import error.IsFullSessionException;
+import utils.ErrorMessages;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,8 +27,6 @@ public class SubjectEnrollment {
     public Map<Integer, Score> getScoresBySession() {
         return scoresBySession;
     }
-// Map<String, String> student = new HashMap<String, String>();
-  //  static Map<Integer, Integer> subject = new HashMap<Integer, Integer>(10);
 
     public int findNextSession() throws IsFullSessionException {
         int nextSession = 1;
@@ -38,14 +38,13 @@ public class SubjectEnrollment {
         }
         return nextSession;
     }
+    public void invalidSession(int session) throws InvalidSessionException {
+        if (scoresBySession.containsKey(session)) {
+        } else {
+            throw new InvalidSessionException(ErrorMessages.INVALID_SESSION);
+        }
+    }
 
-//    Scanner sc = new Scanner(System.in);
-//
-//
-//    String StudentNo;
-//    String StudentName;
-//    int enrollmentScore = 0;
-//    int session = 0;
     public void inputScore(int session, int score)  {
         scoresBySession.put(session, new Score(score, "A"));
     }

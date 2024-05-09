@@ -1,7 +1,9 @@
 package error;
 
+import utils.ErrorMessages;
+
 public class InvalidSessionException extends Exception {
-    public InvalidSessionException(String message) {
-        super(message);
+    public InvalidSessionException(ErrorMessages message) {
+        super(message.getMessage());
     }
 }

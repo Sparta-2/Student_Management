@@ -8,9 +8,6 @@ import SubjectEnrollment.models.SubjectEnrollment;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-import static Score.Score.mainSubjectGrade;
-import static Score.Score.subSubjectGrade;
-
 public class SubjectEnrollmentView {
     static SubjectEnrollmentController controller = new SubjectEnrollmentController();
     public void displaySelectedCourseScores(SubjectEnrollment enrollment) {

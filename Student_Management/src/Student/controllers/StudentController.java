@@ -104,39 +104,40 @@ public class StudentController {
     }
 
     private static void displayRequiredSubjects(String header, List<Subject> Subjects) {
-        System.out.println("--"+header + "--");
+        System.out.println("--" + header + "--");
         Subjects.stream().filter(Subject -> Subject.getType().equals("required"))
                 .forEach(Subject -> System.out.printf(" %s (%s) |", Subject.getSubjectName(), Subject.getSubjectId()));
         System.out.println("\n");
     }
+
     private static void displayElectiveSubjects(String header, List<Subject> Subjects) {
-        System.out.println("--"+header + "--");
+        System.out.println("--" + header + "--");
         Subjects.stream().filter(Subject -> Subject.getType().equals("elective"))
                 .forEach(Subject -> System.out.printf(" %s (%s) |", Subject.getSubjectName(), Subject.getSubjectId()));
         System.out.println("\n");
     }
 
-   // 유효한 학생 번호인지 값인지 확인하기
-   public int getValidStudentId(BufferedReader br) throws InvalidStudentIdException,IOException {
-       while (true) {
-           System.out.print("학생 고유번호를 입력하세요: ");
+    // 유효한 학생 번호인지 값인지 확인하기
+    public int getValidStudentId(BufferedReader br) throws InvalidStudentIdException, IOException {
+        while (true) {
+            System.out.print("학생 고유번호를 입력하세요: ");
 
-           try {
-               String input = br.readLine();
+            try {
+                String input = br.readLine();
 
-               int studentId = Integer.parseInt(input.trim());
+                int studentId = Integer.parseInt(input.trim());
 
-               if (studentManager.getStudentById(studentId) != null) {
-                   return studentId;
-               } else {
-                   throw new InvalidStudentIdException("없는 학생번호입니다. 다시 시도하세요.");
-               }
-           } catch (NumberFormatException e) {
-               System.out.println(e.getMessage());
-           }
+                if (studentManager.getStudentById(studentId) != null) {
+                    return studentId;
+                } else {
+                    throw new InvalidStudentIdException("없는 학생번호입니다. 다시 시도하세요.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println(e.getMessage());
+            }
 
-       }
-   }
+        }
+    }
 
     //학생 이름 수정하기
     public void handleUpdateName(BufferedReader br) throws InvalidStudentIdException {
@@ -154,11 +155,9 @@ public class StudentController {
             studentToUpdate.setName(newName); // 이름 변경
             System.out.println("이름이 성공적으로 변경되었습니다.");
 
-        }
-        catch (InvalidStudentIdException e) {
+        } catch (InvalidStudentIdException e) {
             throw new InvalidStudentIdException(e.getMessage());
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
@@ -188,8 +187,7 @@ public class StudentController {
             }
         } catch (InvalidStudentIdException e) {
             System.out.println(e.getMessage());
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
