@@ -33,8 +33,8 @@ public class StudentManager {
         for (SubjectEnrollment enrollment : student.getSubjects().values()) {
             System.out.printf("과목 ID: %s, 과목 이름: %s\n", enrollment.getSubject().getSubjectId(), enrollment.getSubject().getSubjectName());
         }
-
     }
+
     // ID로 학생 검색
     public Student getStudentById(int id) {
         return students.get(id);
